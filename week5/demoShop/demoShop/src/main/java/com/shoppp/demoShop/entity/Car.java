@@ -18,8 +18,9 @@ public class Car
 
 	private Integer year;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	private User user;
+	@ManyToOne
+	@JoinColumn(name = "basket_id")
+	private Basket basket;
 
 	public Car()
 	{
@@ -32,7 +33,11 @@ public class Car
 		this.price = price;
 		this.year = year;
 	}
- 
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setName(String name)
 	{
 		this.name = name;

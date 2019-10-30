@@ -24,6 +24,7 @@ insert into role(rol) values('CUSTOMER');
 --============================================================================
 create table user_role(user_id int, role_id int, 
 primary key (user_id, role_id),
+
 foreign key (user_id) references Userr(user_id),
 foreign key (role_id) references role(role_id));
 

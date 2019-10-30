@@ -19,17 +19,17 @@ public class User
 
 	private boolean active;
 
+	@OneToOne(fetch = FetchType.EAGER)
+    @SequenceGenerator(name = "basketGenSeq", sequenceName = "basketSeq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(generator = "basketGenSeq")
+    @JoinColumn(name = "basket_id_fk")
+	private Basket basket;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "basket",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id"))
-    private Set<Car> car;
 
 	public User()
     {
@@ -106,13 +106,13 @@ public class User
     	return roles;
     }
 
-    public Set<Car> getCar() {
-        return car;
-    }
-
-    public void setCar(Set<Car> car) {
-        this.car = car;
-    }
+//    public Set<Car> getCar() {
+//        return car;
+//    }
+//
+//    public void setCar(Set<Car> car) {
+//        this.car = car;
+//    }
 
     public String toString()
     {

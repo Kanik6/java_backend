@@ -11,10 +11,35 @@ public class CarService
     @Autowired
     CarRepository carRepository;
 
-    public void test()
+    public void createCar(Car car)
     {
-        System.out.println("TEst");
-        Car car = new Car("KIA", 2321.12, 2013);
         carRepository.save(car);
+    }
+
+    public Car getCar(String carName)
+    {
+        return carRepository.findByName(carName);
+    }
+
+    public Car update(Car car, Long id)
+    {
+        Car putCar = carRepository.findById(id)
+                .map(element -> {
+                    element.setId(id);
+                    element.setName(car.getName());
+                    element.setPrice(car.getPrice());
+                    element.setYear(car.getYear());
+                    return carRepository.save(car);
+                })
+                .orElseGet(() -> {
+                    car.setId(id);
+                    return carRepository.save(car);
+                });
+        return putCar;
+    }
+
+    public void deleteCar(Car car)
+    {
+        carRepository.delete(car);
     }
 }
