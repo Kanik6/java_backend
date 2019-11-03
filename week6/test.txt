@@ -1,0 +1,48 @@
+
+===========================================testing CAR
+
+http://localhost:8080/car
+POST
+{
+    "name": "Audi",
+    "price": 2221,
+    "year": 2016
+}
+----------------------------
+http://localhost:8080/car
+GET
+----------------------------
+http://localhost:8080/car/{car_id}
+PUT
+{
+    "name": "Audi",
+    "price": 2221,
+    "year": 2016
+}
+----------------------------
+http://localhost:8080/car{car_id}
+DELETE
+
+===========================================testing USER
+http://localhost:8080/user
+POST
+{
+    "userName": "Cunade",
+    "password": "somePass",
+    "active": true
+}
+----------------------------
+http://localhost:8080/user
+GET
+----------------------------
+http://localhost:8080/user/{user_id}
+PUT
+{
+    "userName": "Gaara",
+    "password": "somePass",
+    "active": true
+}
+----------------------------
+
+http://localhost:8080/user{user_id}
+DELETE
