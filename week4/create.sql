@@ -11,7 +11,7 @@ insert into car(name, price, year) values('BMW', 32000, '2015-06-01');
 
 
 create table Userr(user_id int AUTO_INCREMENT PRIMARY KEY, user_name varchar(30), password varchar(30) NOT NULL, active boolean);
-insert into Userr (user_name, password, active) values('Gaara', 'crow65', true);
+insert into users (user_name, password, active) values('Gaara', 'crow65', true);
 insert into Userr (user_name, password, active) values('Sakura', 'mima2', true);
 insert into Userr (user_name, password, active) values('Itachi', 'groww', true);
 insert into Userr (user_name, password, active) values('Temari', 'qweee', true);
