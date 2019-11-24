@@ -1,0 +1,14 @@
+create table basket (basket_id bigint not null auto_increment, user_id bigint, primary key (basket_id)) engine=InnoDB;
+create table cars (car_id bigint not null auto_increment, name varchar(255), price double precision, year integer, basket_id bigint, primary key (car_id)) engine=InnoDB;
+create table my_seq_role (next_val bigint) engine=InnoDB;
+insert into my_seq_role values ( 1 );
+create table my_seq_user (next_val bigint) engine=InnoDB;
+insert into my_seq_user values ( 1 );
+create table roles (role_id bigint not null, name varchar(255), primary key (role_id)) engine=InnoDB;
+create table users (user_id bigint not null, active bit not null, password varchar(255), user_name varchar(255), basket_id_fk bigint, primary key (user_id)) engine=InnoDB;
+create table users_roles (user_id bigint not null, role_id bigint not null, primary key (user_id, role_id)) engine=InnoDB;
+alter table basket add constraint FK810a8gq30miyp6j1eub97qm6k foreign key (user_id) references users (user_id);
+alter table cars add constraint FKjhv4kfichpdg6jyn22cy4j4tq foreign key (basket_id) references basket (basket_id);
+alter table users add constraint FK7gau3tldmd61jldfqfdk6txou foreign key (basket_id_fk) references basket (basket_id);
+alter table users_roles add constraint FKj6m8fwv7oqv74fcehir1a9ffy foreign key (role_id) references roles (role_id);
+alter table users_roles add constraint FK2o0jvgh89lemvvo17cbqvdxaa foreign key (user_id) references users (user_id);
